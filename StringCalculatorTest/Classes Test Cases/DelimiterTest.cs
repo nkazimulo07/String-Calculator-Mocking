@@ -13,7 +13,6 @@ namespace StringCalculatorTest.Classes_Test_Cases
         [SetUp]
         public void Setup()
         {
-            //  _delimiters = Substitute.For<IDelimiter>();
             _delimiters = new DelimiterService();
         }
 

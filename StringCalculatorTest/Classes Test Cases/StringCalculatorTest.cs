@@ -17,7 +17,6 @@ namespace StringCalculatorTest
         [SetUp]
         public void Setup()
         {
-            var calculationDependencies = 
             calculatorMock = Substitute.For<ICalculation>();
             _delimiterMock = Substitute.For<IDelimiter>();
             _splitMock = Substitute.For<ISplit>();
@@ -51,7 +50,6 @@ namespace StringCalculatorTest
 
             // assert
             _stringCalculator.PerformCalculation(input).Returns(expected);
-
         }
 
         [Test]
@@ -63,9 +61,8 @@ namespace StringCalculatorTest
 
             // act 
             var results = _stringCalculator.PerformCalculation(input);
-            _stringCalculator.PerformCalculation(input).Returns(expected);
             // assert
-            //Assert.AreEqual(expected, results);
+            _stringCalculator.PerformCalculation(input).Returns(expected);
         }
 
         [Test]
@@ -94,7 +91,6 @@ namespace StringCalculatorTest
 
             // assert
             _stringCalculator.PerformCalculation(input).Returns(expected);
-           
         }
 
         [Test]
@@ -109,7 +105,6 @@ namespace StringCalculatorTest
 
             // assert
             _stringCalculator.PerformCalculation(input).Returns(expected);
-            
         }
 
         [Test]
@@ -124,7 +119,6 @@ namespace StringCalculatorTest
 
             // assert
             _stringCalculator.PerformCalculation(input).Returns(expected);
-           
         }
 
         [Test]
