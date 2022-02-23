@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StringCalculatorTask.Services
 {
-    public class Split : ISplit
+    public class SplitService : ISplit
     {
         string slash = "\\";
         public string[] SplitNumbers(List<string> delimiters, string numbers) 
