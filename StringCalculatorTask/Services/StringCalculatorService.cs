@@ -21,6 +21,7 @@ namespace StringCalculatorTask
             {
                 return 0;
             }
+
             var numbersList = getNumbersList(numbers);
 
             return _calculator.Calculate(numbersList);
