@@ -10,12 +10,12 @@ namespace StringCalculatorTest.Classes_Test_Cases
 {
     public class SplitTest
     {
-        private Split _split;
+        private SplitService _split;
 
         [SetUp]
         public void Setup()
         {
-            _split = new Split();
+            _split = new SplitService();
         }
 
         [Test]

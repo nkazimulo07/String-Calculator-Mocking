@@ -24,7 +24,6 @@ namespace StringCalculatorITest.Classes_Test_Case
         {
             var input = new List<int> { 1, 2, -3 };
           
-           
             _negativeNumbers.When(x => x.CheckNegativeNumbers(input))
         .Do(x => throw new Exception("negatives not allowed: -3") );
             Assert.Throws<System.Exception>(() => _negativeNumbers.CheckNegativeNumbers(input));

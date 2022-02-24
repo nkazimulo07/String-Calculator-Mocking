@@ -22,7 +22,7 @@ namespace StringCalculatorTest.Classes_Test_Cases
             // arrange
             const string input = "//[*][%][:][;]\n";
             var expected = new List<string> { ",", "\n", "*", "%", ":", ";" };
-
+            
             // act 
             var results = _delimiters.GetDelimiters(input);
 

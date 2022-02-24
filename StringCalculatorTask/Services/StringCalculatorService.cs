@@ -36,5 +36,17 @@ namespace StringCalculatorTask
             return numbersList;
 
         }
+
+        public int perform(string numbers)
+        {
+            if (string.IsNullOrEmpty(numbers))
+            {
+                return 0;
+            }
+            var delimiters = _delimiter.GetDelimiters(numbers);
+            var splitedNumbers = _split.SplitNumbers(delimiters, numbers);
+            var numbersList = _numbers.ConvertStringArrayToIntList(splitedNumbers);
+            return _calculator.Calculate(numbersList);
+        }
     }
 }

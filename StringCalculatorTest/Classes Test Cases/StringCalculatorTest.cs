@@ -30,7 +30,7 @@ namespace StringCalculatorTest
             // arrange
             const int expected = 0;
             const string input = "";
-
+            
             // act 
             var results = _stringCalculator.PerformCalculation(input);
 
@@ -58,11 +58,18 @@ namespace StringCalculatorTest
             // arrange
             const string input = "1,2";
             const int expected = 3;
+            var expected1 = new List<string> { ",", "\n" };
+            string[] expected2 = { "1", "2" };
+            var expected3 = new List<int>() { 1, 2 };
 
             // act 
-            var results = _stringCalculator.PerformCalculation(input);
+            _delimiterMock.GetDelimiters(input).Returns(expected1);
+            _splitMock.SplitNumbers(expected1, input).Returns(expected2);
+            _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
+            calculatorMock.Calculate(expected3).Returns(expected);
+            var results = _stringCalculator.perform(input);
             // assert
-            _stringCalculator.PerformCalculation(input).Returns(expected);
+            Assert.AreEqual(expected, results);
         }
 
         [Test]
@@ -71,12 +78,18 @@ namespace StringCalculatorTest
             // arrange
             const string input = "//;\n1;2";
             const int expected = 3;
+            var expected1 = new List<string> { ",", "\n",";" };
+            string[] expected2 = { "1", "2" };
+            var expected3 = new List<int>() { 1, 2 };
 
             // act 
-            var results = _stringCalculator.PerformCalculation(input);
-
+            _delimiterMock.GetDelimiters(input).Returns(expected1);
+            _splitMock.SplitNumbers(expected1, input).Returns(expected2);
+            _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
+            calculatorMock.Calculate(expected3).Returns(expected);
+            var results = _stringCalculator.perform(input);
             // assert
-            _stringCalculator.PerformCalculation(input).Returns(expected);
+            Assert.AreEqual(expected, results);
         }
 
         [Test]
@@ -85,12 +98,17 @@ namespace StringCalculatorTest
             // arrange
             const string input = "//[\n1[2[10";
             const int expected = 13;
-
+            var expected1 = new List<string> { ",", "\n", "[" };
+            string[] expected2 = { "1", "2", "10" };
+            var expected3 = new List<int>() { 1, 2, 10 };
             // act 
-            var results = _stringCalculator.PerformCalculation(input);
-
+            _delimiterMock.GetDelimiters(input).Returns(expected1);
+            _splitMock.SplitNumbers(expected1, input).Returns(expected2);
+            _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
+            calculatorMock.Calculate(expected3).Returns(expected);
+            var results = _stringCalculator.perform(input);
             // assert
-            _stringCalculator.PerformCalculation(input).Returns(expected);
+            Assert.AreEqual(expected, results);
         }
 
         [Test]
@@ -100,11 +118,18 @@ namespace StringCalculatorTest
             const string input = "//***\n1***2***3";
             const int expected = 6;
 
-            // act 
-            var results = _stringCalculator.PerformCalculation(input);
+            var expected1 = new List<string> { ",", "\n", "***" };
+            string[] expected2 = { "1", "2", "3" };
+            var expected3 = new List<int>() { 1, 2, 3};
 
+            // act 
+            _delimiterMock.GetDelimiters(input).Returns(expected1);
+            _splitMock.SplitNumbers(expected1, input).Returns(expected2);
+            _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
+            calculatorMock.Calculate(expected3).Returns(expected);
+            var results = _stringCalculator.perform(input);
             // assert
-            _stringCalculator.PerformCalculation(input).Returns(expected);
+            Assert.AreEqual(expected, results);
         }
 
         [Test]
@@ -113,12 +138,18 @@ namespace StringCalculatorTest
             // arrange
             const string input = "//[*][%]\n1*2%3";
             const int expected = 6;
+            var expected1 = new List<string> { ",", "\n", "*", "%" };
+            string[] expected2 = { "1", "2", "3" };
+            var expected3 = new List<int>() { 1, 2, 3 };
 
             // act 
-            var results = _stringCalculator.PerformCalculation(input);
-
+            _delimiterMock.GetDelimiters(input).Returns(expected1);
+            _splitMock.SplitNumbers(expected1, input).Returns(expected2);
+            _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
+            calculatorMock.Calculate(expected3).Returns(expected);
+            var results = _stringCalculator.perform(input);
             // assert
-            _stringCalculator.PerformCalculation(input).Returns(expected);
+            Assert.AreEqual(expected, results);
         }
 
         [Test]
@@ -127,13 +158,19 @@ namespace StringCalculatorTest
             // arrange
             const int expected = 2;
             const string input = "1000,2";
+            var expected1 = new List<string> { ",", "\n" };
+            string[] expected2 = { "1000", "2"};
+            var expected3 = new List<int>() { 2 };
 
             // act 
-            var results = _stringCalculator.PerformCalculation(input);
-
+            _delimiterMock.GetDelimiters(input).Returns(expected1);
+            _splitMock.SplitNumbers(expected1, input).Returns(expected2);
+            _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
+            calculatorMock.Calculate(expected3).Returns(expected);
+            var results = _stringCalculator.perform(input);
             // assert
-            _stringCalculator.PerformCalculation(input).Returns(expected);
-            
+            Assert.AreEqual(expected, results);
+
         }
     }
 }
