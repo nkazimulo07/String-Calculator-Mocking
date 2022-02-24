@@ -30,7 +30,7 @@ namespace StringCalculatorTest
             // arrange
             const int expected = 0;
             const string input = "";
-            
+
             // act 
             var results = _stringCalculator.PerformCalculation(input);
 
@@ -46,7 +46,7 @@ namespace StringCalculatorTest
             const string input = "1";
             var expected1 = new List<string> { ",", "\n" };
             string[] expected2 = { "1" };
-            var expected3 = new List<int>() { 1};
+            var expected3 = new List<int>() { 1 };
 
             // act 
             _delimiterMock.GetDelimiters(input).Returns(expected1);
@@ -86,7 +86,7 @@ namespace StringCalculatorTest
             // arrange
             const string input = "//;\n1;2";
             const int expected = 3;
-            var expected1 = new List<string> { ",", "\n",";" };
+            var expected1 = new List<string> { ",", "\n", ";" };
             string[] expected2 = { "1", "2" };
             var expected3 = new List<int>() { 1, 2 };
 
@@ -131,7 +131,7 @@ namespace StringCalculatorTest
 
             var expected1 = new List<string> { ",", "\n", "***" };
             string[] expected2 = { "1", "2", "3" };
-            var expected3 = new List<int>() { 1, 2, 3};
+            var expected3 = new List<int>() { 1, 2, 3 };
 
             // act 
             _delimiterMock.GetDelimiters(input).Returns(expected1);
@@ -172,7 +172,7 @@ namespace StringCalculatorTest
             const int expected = 2;
             const string input = "1000,2";
             var expected1 = new List<string> { ",", "\n" };
-            string[] expected2 = { "1000", "2"};
+            string[] expected2 = { "1000", "2" };
             var expected3 = new List<int>() { 2 };
 
             // act 

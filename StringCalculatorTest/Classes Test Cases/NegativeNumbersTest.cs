@@ -10,7 +10,7 @@ namespace StringCalculatorITest.Classes_Test_Case
     public class NegativeNumbersTest
     {
         private NegativeNumbersService _negativeNumbers;
-        private  IErrorHandling _errorHandlingMock;
+        private IErrorHandling _errorHandlingMock;
 
         [SetUp]
         public void Setup()
@@ -22,13 +22,15 @@ namespace StringCalculatorITest.Classes_Test_Case
         [Test]
         public void WhenStringWithNegativeNumber_UsingCheckNegativeNumbers_ResultsReturnsException()
         {
+            // arrange
             var input = new List<int> { 1, 2, -3 };
-          
-            _negativeNumbers.When(x => x.CheckNegativeNumbers(input))
-        .Do(x => throw new Exception("negatives not allowed: -3") );
-            Assert.Throws<System.Exception>(() => _negativeNumbers.CheckNegativeNumbers(input));
 
+            //act
+            _errorHandlingMock.When(x => x.ThrowException(Arg.Any<string>())).Do(x => throw new Exception("negatives not allowed: -3"));
+            var results = Assert.Throws<System.Exception>(() => _negativeNumbers.CheckNegativeNumbers(input));
 
+            //assert
+            Assert.AreEqual("negatives not allowed: -3", results.Message);
         }
     }
 }
