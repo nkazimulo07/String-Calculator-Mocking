@@ -10,6 +10,7 @@ namespace StringCalculatorTest.Classes_Test_Cases
     {
         private INegativeNumbers _negativeNumbersMock;
         private NumbersService _numbers;
+
         [SetUp]
         public void Setup()
         {
@@ -22,7 +23,7 @@ namespace StringCalculatorTest.Classes_Test_Cases
         {
             // arrange
             string[] input = { "1", "2" };
-            var expected = new List<int>(){ 1, 2 };
+            var expected = new List<int>() { 1, 2 };
 
             // act 
             var results = _numbers.ConvertStringArrayToIntList(input);

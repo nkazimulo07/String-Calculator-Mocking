@@ -30,7 +30,7 @@ namespace StringCalculatorTask
         public List<int> getNumbersList(string numbers)
         {
             var delimiters = _delimiter.GetDelimiters(numbers);
-            var splitedNumbers = _split.SplitNumbers(delimiters,numbers);
+            var splitedNumbers = _split.SplitNumbers(delimiters, numbers);
             var numbersList = _numbers.ConvertStringArrayToIntList(splitedNumbers);
 
             return numbersList;

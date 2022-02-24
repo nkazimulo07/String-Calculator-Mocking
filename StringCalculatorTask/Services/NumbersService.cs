@@ -19,7 +19,7 @@ namespace StringCalculatorTask.Services
                 numbersList.Add(Convert.ToInt32(number));
             }
 
-            var checkNegatives = _negativeNumbers.CheckNegativeNumbers(numbersList);
+             _negativeNumbers.CheckNegativeNumbers(numbersList);
 
             return GetNumbersLessThanOneThousand(numbersList);
         }

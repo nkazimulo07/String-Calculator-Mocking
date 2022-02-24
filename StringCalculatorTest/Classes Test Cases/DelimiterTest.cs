@@ -1,6 +1,4 @@
-﻿using NSubstitute;
-using NUnit.Framework;
-using StringCalculatorTask.Interfaces;
+﻿using NUnit.Framework;
 using StringCalculatorTask.Services;
 using System.Collections.Generic;
 

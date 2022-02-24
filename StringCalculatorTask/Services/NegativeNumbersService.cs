@@ -16,9 +16,9 @@ namespace StringCalculatorTask.Services
 
             foreach (int number in numbers)
             {
-                if(number < 0)
+                if (number < 0)
                 {
-                    negativeNumbers += number + " ";
+                    negativeNumbers += number + " "; 
                 }
             }
 
