@@ -44,12 +44,19 @@ namespace StringCalculatorTest
             // arrange
             const int expected = 1;
             const string input = "1";
+            var expected1 = new List<string> { ",", "\n" };
+            string[] expected2 = { "1" };
+            var expected3 = new List<int>() { 1};
 
             // act 
-            var results = _stringCalculator.PerformCalculation(input);
+            _delimiterMock.GetDelimiters(input).Returns(expected1);
+            _splitMock.SplitNumbers(expected1, input).Returns(expected2);
+            _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
+            calculatorMock.Calculate(expected3).Returns(expected);
+            var results = _stringCalculator.getNumbersList(input);
 
             // assert
-            _stringCalculator.PerformCalculation(input).Returns(expected);
+            Assert.AreEqual(expected, results);
         }
 
         [Test]
@@ -67,7 +74,8 @@ namespace StringCalculatorTest
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
             calculatorMock.Calculate(expected3).Returns(expected);
-            var results = _stringCalculator.perform(input);
+            var results = _stringCalculator.getNumbersList(input);
+
             // assert
             Assert.AreEqual(expected, results);
         }
@@ -87,7 +95,8 @@ namespace StringCalculatorTest
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
             calculatorMock.Calculate(expected3).Returns(expected);
-            var results = _stringCalculator.perform(input);
+            var results = _stringCalculator.getNumbersList(input);
+
             // assert
             Assert.AreEqual(expected, results);
         }
@@ -101,12 +110,14 @@ namespace StringCalculatorTest
             var expected1 = new List<string> { ",", "\n", "[" };
             string[] expected2 = { "1", "2", "10" };
             var expected3 = new List<int>() { 1, 2, 10 };
+
             // act 
             _delimiterMock.GetDelimiters(input).Returns(expected1);
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
             calculatorMock.Calculate(expected3).Returns(expected);
-            var results = _stringCalculator.perform(input);
+            var results = _stringCalculator.getNumbersList(input);
+
             // assert
             Assert.AreEqual(expected, results);
         }
@@ -127,7 +138,8 @@ namespace StringCalculatorTest
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
             calculatorMock.Calculate(expected3).Returns(expected);
-            var results = _stringCalculator.perform(input);
+            var results = _stringCalculator.getNumbersList(input);
+
             // assert
             Assert.AreEqual(expected, results);
         }
@@ -147,7 +159,8 @@ namespace StringCalculatorTest
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
             calculatorMock.Calculate(expected3).Returns(expected);
-            var results = _stringCalculator.perform(input);
+            var results = _stringCalculator.getNumbersList(input);
+
             // assert
             Assert.AreEqual(expected, results);
         }
@@ -167,7 +180,8 @@ namespace StringCalculatorTest
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
             calculatorMock.Calculate(expected3).Returns(expected);
-            var results = _stringCalculator.perform(input);
+            var results = _stringCalculator.getNumbersList(input);
+
             // assert
             Assert.AreEqual(expected, results);
 
