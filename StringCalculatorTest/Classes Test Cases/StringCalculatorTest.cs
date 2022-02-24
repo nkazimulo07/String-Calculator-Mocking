@@ -9,7 +9,7 @@ namespace StringCalculatorTest
     public class Tests
     {
         private StringCalculatorService _stringCalculator;
-        private ICalculation calculatorMock;
+        private ICalculation _calculatorMock;
         private IDelimiter _delimiterMock;
         private ISplit _splitMock;
         private INumbers _numbersMock;
@@ -17,11 +17,11 @@ namespace StringCalculatorTest
         [SetUp]
         public void Setup()
         {
-            calculatorMock = Substitute.For<ICalculation>();
+            _calculatorMock = Substitute.For<ICalculation>();
             _delimiterMock = Substitute.For<IDelimiter>();
             _splitMock = Substitute.For<ISplit>();
             _numbersMock = Substitute.For<INumbers>();
-            _stringCalculator = new StringCalculatorService(calculatorMock, _delimiterMock, _splitMock, _numbersMock);
+            _stringCalculator = new StringCalculatorService(_calculatorMock, _delimiterMock, _splitMock, _numbersMock);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace StringCalculatorTest
             _delimiterMock.GetDelimiters(input).Returns(expected1);
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
-            calculatorMock.Calculate(expected3).Returns(expected);
+            _calculatorMock.Calculate(expected3).Returns(expected);
             var results = _stringCalculator.getNumbersList(input);
 
             // assert
@@ -73,7 +73,7 @@ namespace StringCalculatorTest
             _delimiterMock.GetDelimiters(input).Returns(expected1);
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
-            calculatorMock.Calculate(expected3).Returns(expected);
+            _calculatorMock.Calculate(expected3).Returns(expected);
             var results = _stringCalculator.getNumbersList(input);
 
             // assert
@@ -94,7 +94,7 @@ namespace StringCalculatorTest
             _delimiterMock.GetDelimiters(input).Returns(expected1);
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
-            calculatorMock.Calculate(expected3).Returns(expected);
+            _calculatorMock.Calculate(expected3).Returns(expected);
             var results = _stringCalculator.getNumbersList(input);
 
             // assert
@@ -115,7 +115,7 @@ namespace StringCalculatorTest
             _delimiterMock.GetDelimiters(input).Returns(expected1);
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
-            calculatorMock.Calculate(expected3).Returns(expected);
+            _calculatorMock.Calculate(expected3).Returns(expected);
             var results = _stringCalculator.getNumbersList(input);
 
             // assert
@@ -137,7 +137,7 @@ namespace StringCalculatorTest
             _delimiterMock.GetDelimiters(input).Returns(expected1);
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
-            calculatorMock.Calculate(expected3).Returns(expected);
+            _calculatorMock.Calculate(expected3).Returns(expected);
             var results = _stringCalculator.getNumbersList(input);
 
             // assert
@@ -158,7 +158,7 @@ namespace StringCalculatorTest
             _delimiterMock.GetDelimiters(input).Returns(expected1);
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
-            calculatorMock.Calculate(expected3).Returns(expected);
+            _calculatorMock.Calculate(expected3).Returns(expected);
             var results = _stringCalculator.getNumbersList(input);
 
             // assert
@@ -179,7 +179,7 @@ namespace StringCalculatorTest
             _delimiterMock.GetDelimiters(input).Returns(expected1);
             _splitMock.SplitNumbers(expected1, input).Returns(expected2);
             _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
-            calculatorMock.Calculate(expected3).Returns(expected);
+            _calculatorMock.Calculate(expected3).Returns(expected);
             var results = _stringCalculator.getNumbersList(input);
 
             // assert
