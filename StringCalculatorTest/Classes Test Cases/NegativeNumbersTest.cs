@@ -32,5 +32,18 @@ namespace StringCalculatorITest.Classes_Test_Case
             //assert
             Assert.AreEqual("negatives not allowed: -3", results.Message);
         }
+        [Test]
+        public void WhenStringWithNegativeNumbers_UsingCheckNegativeNumbers_ResultsReturnsException()
+        {
+            // arrange
+            var input = new List<int> { -1, -2, -3 };
+
+            //act
+            _errorHandlingMock.When(x => x.ThrowException(Arg.Any<string>())).Do(x => throw new Exception("negatives not allowed: -1 -2 -3"));
+            var results = Assert.Throws<System.Exception>(() => _negativeNumbers.CheckNegativeNumbers(input));
+
+            //assert
+            Assert.AreEqual("negatives not allowed: -1 -2 -3", results.Message);
+        }
     }
 }
