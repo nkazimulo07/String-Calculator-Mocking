@@ -42,17 +42,17 @@ namespace StringCalculatorTest
         public void WhenStringWithOneNumber_UsingPerfomCalculation_ResultsReturnsSum()
         {
             // arrange
-            const int expected = 1;
             const string input = "1";
-            var expected1 = new List<string> { ",", "\n" };
-            string[] expected2 = { "1" };
-            var expected3 = new List<int>() { 1 };
+            const int expected = -1;
+            var delimitersList = new List<string> { ",", "\n" };
+            string[] numbersStringArray = { "1" };
+            var numbersList = new List<int>() { 1 };
 
             // act 
-            _delimiterMock.GetDelimiters(input).Returns(expected1);
-            _splitMock.SplitNumbers(expected1, input).Returns(expected2);
-            _numbersMock.ConvertStringArrayToIntList(expected2).Returns(expected3);
-            _calculatorMock.Calculate(expected3).Returns(expected);
+            _delimiterMock.GetDelimiters(input).Returns(delimitersList);
+            _splitMock.SplitNumbers(delimitersList, input).Returns(numbersStringArray);
+            _numbersMock.ConvertStringArrayToIntList(numbersStringArray).Returns(numbersList);
+            _calculatorMock.Calculate(numbersList).Returns(expected);
             var results = _stringCalculator.getNumbersList(input);
 
             // assert
